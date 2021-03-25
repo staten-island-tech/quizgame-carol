@@ -1,29 +1,6 @@
 console.log("You're connected");
 
-const questions = [
-  {
-    question: "",
-    true: " ",
-    false: " ",
-  },
-  {
-    question: "",
-    true: " ",
-    false: " ",
-  },
-  {
-    question: "",
-    true: " ",
-    false: " ",
-  },
-  {
-    question: "",
-    true: " ",
-    false: " ",
-  },
-  {
-    question: "",
-    true: " ",
-    false: " ",
-  },
-];
+// questions
+// Answers
+
+// to improt: omport {_function or constant name} from ./folderlocation
