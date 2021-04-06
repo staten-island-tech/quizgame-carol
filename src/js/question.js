@@ -1,39 +1,41 @@
-const questions = [
+const myQuestions = [
   {
     question: "Where did Apple Pie originate from?",
-    a: "Asia",
-    b: "America",
-    c: "England",
-    d: "Pie?",
-    answer: c,
+    answers: {
+      a: "Pie?",
+      b: "America",
+      c: "England",
+    },
+    correctAnswer: "c",
   },
+
   {
     question: "What is the national animal of Scotland?",
-    a: "Horse",
-    b: "Lion",
-    c: "Unicorn",
-    answer: c,
+    answers: {
+      a: "Horse",
+      b: "Lion",
+      c: "Unicorn",
+    },
+    correctAnswer: "c",
   },
+
   {
     question: "Knock. Knock.",
-    a: "Who's there?",
-    b: "Hello?",
-    c: "... Imma open the door.",
-    d: "Shh. You don't wanna scare them.",
-    answer: d,
+    answers: {
+      a: "Who's there?",
+      b: "Shh. You don't wanna scare them.",
+      c: "... Imma open the door.",
+    },
+    correctAnswer: "b",
   },
+
   {
     question: "What a group of bunnies called?",
-    a: "Bun",
-    b: "Herd",
-    c: "Fluffle",
-    d: "Pile of Cotton",
-    answer: c,
-  },
-  {
-    question: "Is smiling contagious?",
-    a: "Yes",
-    b: "No",
-    answer: a,
+    answers: {
+      a: "Bun",
+      b: "Herd",
+      c: "Fluffle",
+    },
+    correctAnswer: "c",
   },
 ];
