@@ -23,6 +23,7 @@
       }
 
       // Adds the question and answers to the output (to be seen on screen I believe)
+      ///Change
       output.push(
         `<div class="question"> ${currentQuestion.question} </div>
             <div class="answers"> ${answers.join("")} </div>`
