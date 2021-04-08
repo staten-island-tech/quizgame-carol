@@ -1,3 +1,36 @@
 body {
   background-color: beige;
 }
+
+.quizBox {
+  width: 80vw;
+  max-width: 40rem;
+  background-color: rgb(218, 213, 197);
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border-radius: 2rem;
+  border: solid 0.3rem goldenrod;
+}
+
+.question {
+  margin: 1rem;
+  font-size: 2rem;
+}
+.answer {
+  background-color: rgb(243, 237, 224);
+  color: black;
+  justify-content: space-around;
+  margin: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  flex-direction: row;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  border: solid 0.3rem goldenrod;
+}
+
+.answer:hover {
+  transform: scaleX(0.98) scaleY(0.9);
+  box-shadow: rgba(111, 88, 31, 0.597) 0.2rem 0.2rem;
+}
