@@ -48,9 +48,7 @@ const quizQuestions = [
 ];
 
 //Grab the HTML (DOM)
-const answer = document.querySelectorAll(".answer");
-const question = document.querySelector(".question");
-const result = document.getElementById("result");
+
 
 //Set Score Values
 let currentQuestion = {};
@@ -63,7 +61,7 @@ const scorePt = 1;
 startGame = () => {
   questionCounter = 0;
   score = 0;
-  availableQuestions = [...quizQuestions];
+  if question
 };
 
 //Result
