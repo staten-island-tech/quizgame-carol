@@ -3,6 +3,22 @@ body {
   padding: 1.5rem 1rem 2rem 1rem;
 }
 
+.title {
+  width: 90vw;
+  max-width: 50rem;
+  margin: auto;
+  text-align: center;
+}
+
+.main-head {
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-size: 3rem;
+}
+
+.main-text {
+  font-size: 1.7rem;
+}
+
 .quizBox {
   width: 80vw;
   max-width: 40rem;
@@ -38,6 +54,20 @@ body {
   box-shadow: rgba(111, 88, 31, 0.597) 0.2rem 0.2rem;
 }
 
+.selectedAnswer {
+  list-style: none;
+  background-color: rgb(156, 114, 23);
+  color: rgb(255, 250, 239);
+  justify-content: space-around;
+  margin: 0.7rem;
+  padding: 0.2rem 0.5rem;
+  flex-direction: row;
+  font-size: 1.5rem;
+  border-radius: 1rem;
+  border: solid 0.3rem goldenrod;
+  transform: scaleX(0.95) scaleY(0.85);
+}
+
 .submitBtn {
   background-color: bisque;
   border: 0.2rem solid goldenrod;
@@ -52,4 +82,8 @@ body {
   min-width: 5rem;
   max-width: 15rem;
   padding: 0.5rem 0;
+}
+
+.hidden {
+  display: none;
 }

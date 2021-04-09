@@ -11,7 +11,12 @@ const DOMSelectors = {
   choiceD: document.getElementsByClassName("answerD"),
 };
 
-console.log(DOMSelectors.quizContainer);
+function DOMSeleLoad() {
+  console.log(`Loading "DOMSelectors"`);
+  console.log(DOMSelectors);
+  console.log(`"DOMSelectors" complete`);
+}
+DOMSeleLoad();
 
 //Questions
 const quizQuestions = [
@@ -66,13 +71,49 @@ const quiz = function () {
       <p class="answer answerC"> ${item.c} </p>
       <p class="answer answerD"> ${item.d} </p> </div>`
       ),
-    console.log(`function "quiz" is complete.`)
+    console.log(`function "quiz" is running.`)
   );
 };
 quiz();
 
 //Variables
 let score = 0;
+let self = this;
+
+//Adds event listener for clcks on answers I believe
+let userAnswers = [];
+let currentQuestion = {};
+let acceptingAnswers = true;
+
+//////// Unable to determine if successful - scratching for now
+// let inputs = document.getElementsByClassName("answer");
+// for (let i = 0; i < inputs.length; i++) {
+//   inputs[i].addEventListener("click", check);
+// }
+/////////
+
+/// If all questions are answered
+
+//////// Does Note Work - Unable to track if all wuestions have been answered
+// function check() {
+//   userAnswers = [];
+//   let questionAnswered = 0;
+//   for (let i = 0; i < inputs.length; i++) {
+//     if (inputs[i].checked) {
+//       userAnswers.push(i % 3);
+//       questionAnswered++;
+//     }
+//   }
+//   if (questionAnswered == quizQuestions.length) finalAnswer();
+
+//   console.log(`function "check" is running`);
+// }
+
+// function finalAnswer() {
+//   console.log(`Function "check" and "finalAnswer" runned`);
+// }
+////////
+
 //Mark which answer choice was chosen - correct or not
 
 //Add points if the answer chosen is correct (activated/used whent he submit btn is pressed)

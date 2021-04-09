@@ -9,6 +9,7 @@
 <body>
     <div class="title">
         <h1 class="main-head" >Simple Greetings</h1>
+        <p class="main-text" >The Submit Button will appear at the bottom of the page when all questions are answered.</p>
     </div>
 
     <div class="quiz">
@@ -22,9 +23,14 @@
 -->
     </div>
 
-    <div id="result"></div>
-    <a href="#" class="submitBtn">Submit</a>
+    <a href="#" class="submitBtn hidden">Submit</a>
 
+    <div id="result hidden">
+        <p class="resultMessage hidden" ></p>
+        <p class="resultScore hidden" ></p>
+    </div>
+    <h1 class="selectedAnswer">Hi</h1>
+    
     <script src="js/script.js"></script>
 </body>
 </html>
