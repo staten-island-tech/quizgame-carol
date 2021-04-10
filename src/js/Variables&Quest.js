@@ -45,17 +45,13 @@ const myQuestions = [
 
 // export { myQuestions };
 
-if (currentSlide === 0) {
-  previousButton.style.display = "none";
+if (numCorrect >= 3) {
+  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} 
+  *The conversation went well. It appears that you've greeted an old friend.... Do you remember who they are?`;
 } else {
-  previousButton.style.display = "inline-block";
+  resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}       
+  *You felt a chill down your spine. The tension in the air seems to have risen. It seems a stranger has mistaken you for a friend. You tried to play along.`;
 }
-//allows the submitBtn to be shown on the last slide and for the NextBtn to be inactivated
-if (currentSlide === slides.length - 1) {
-  ///// .style - adds CSS code, varies depending on what the following element is
-  nextButton.style.display = "none";
-  submitButton.style.display = "inline-block";
-} else {
-  nextButton.style.display = "inline-block";
-  submitButton.style.display = "none";
+if (numCorrect == 0) {
+  resultsContainer.innerHTML = `*The stranger appears confused by your response. Perhaps they've realized that you aren't a familiar friend.`;
 }

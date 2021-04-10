@@ -64,7 +64,16 @@
     });
 
     // show number of correct answers out of total
-    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+    if (numCorrect >= 3) {
+      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} 
+      *The conversation went well. It appears that you've greeted an old friend.... Do you remember who they are?`;
+    } else {
+      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}       
+      *You felt a chill down your spine. The tension in the air seems to have risen. It seems a stranger has mistaken you for a friend. You tried to play along.`;
+    }
+    if (numCorrect == 0) {
+      resultsContainer.innerHTML = `*The stranger appears confused by your response. Perhaps they've realized that you aren't a familiar friend.`;
+    }
   }
 
   function showSlide(n) {
