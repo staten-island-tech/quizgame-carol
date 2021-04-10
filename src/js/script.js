@@ -1,5 +1,3 @@
-//import { myQuestions } from "./Variables&Quest";
-
 (function () {
   // Functions
   function buildQuiz() {
@@ -14,7 +12,6 @@
       // and for each available answer...
       for (letter in currentQuestion.answers) {
         // ...add an HTML radio button
-        /// .push --> adds HTML
         answers.push(
           `<label>
               <input type="radio" name="question${questionNumber}" value="${letter}">
@@ -25,7 +22,6 @@
       }
 
       // add this question and its answers to the output
-
       output.push(
         `<div class="slide">
             <div class="question"> ${currentQuestion.question} </div>
@@ -67,26 +63,14 @@
       }
     });
 
-    ///Response/Result based on the Number of Correct Answers
-    if (numCorrect >= 3) {
-      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} 
-      *The conversation went well. It appears that you've greeted an old friend.... Do you remember who they are?`;
-    } else {
-      resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}       
-      *You felt a chill down your spine. The tension in the air seems to have risen. It seems a stranger has mistaken you for a friend. You tried to play along.`;
-    }
-    if (numCorrect == 0) {
-      resultsContainer.innerHTML = `*The stranger appears confused by your response. Perhaps they've realized that you aren't a familiar friend.`;
-    }
+    // show number of correct answers out of total
+    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
   }
 
   function showSlide(n) {
-    ///adds the class 'active-slide" for the question/slide to be visible
     slides[currentSlide].classList.remove("active-slide");
     slides[n].classList.add("active-slide");
-    currentSlide = n; ////both variables are equal - currentSlide is also equal to 0 (used to start off the function)
-
-    ///allows the previousBtn to be shown when the slide count is over 0
+    currentSlide = n;
     if (currentSlide === 0) {
       previousButton.style.display = "none";
     } else {
@@ -103,7 +87,6 @@
     }
   }
 
-  ///Adds or Subtract the number of slides depending on which Btn is pressed
   function showNextSlide() {
     showSlide(currentSlide + 1);
   }
@@ -112,11 +95,7 @@
     showSlide(currentSlide - 1);
   }
 
-  // Variables - cannot import properly - questions do not show up when placed in seperate file
-  const previousButton = document.getElementById("previous");
-  const nextButton = document.getElementById("next");
-  const slides = document.querySelectorAll(".slide");
-  let currentSlide = 0;
+  // Variables
   const quizContainer = document.getElementById("quiz");
   const resultsContainer = document.getElementById("results");
   const submitButton = document.getElementById("submit");
@@ -164,13 +143,20 @@
       correctAnswer: "b",
     },
   ];
-  ///Start the Quiz function
+
+  // Kick things off
   buildQuiz();
+
+  // Pagination
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
 
   // Show the first slide
   showSlide(currentSlide);
 
-  // Event listeners for different stuff and each runs a different function
+  // Event listeners
   submitButton.addEventListener("click", showResults);
   previousButton.addEventListener("click", showPreviousSlide);
   nextButton.addEventListener("click", showNextSlide);

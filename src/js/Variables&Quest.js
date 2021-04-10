@@ -43,4 +43,19 @@ const myQuestions = [
   },
 ];
 
-export { myQuestions };
+// export { myQuestions };
+
+if (currentSlide === 0) {
+  previousButton.style.display = "none";
+} else {
+  previousButton.style.display = "inline-block";
+}
+//allows the submitBtn to be shown on the last slide and for the NextBtn to be inactivated
+if (currentSlide === slides.length - 1) {
+  ///// .style - adds CSS code, varies depending on what the following element is
+  nextButton.style.display = "none";
+  submitButton.style.display = "inline-block";
+} else {
+  nextButton.style.display = "inline-block";
+  submitButton.style.display = "none";
+}
