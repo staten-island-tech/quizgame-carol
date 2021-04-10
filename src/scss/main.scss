@@ -1,89 +1,62 @@
 body {
-  background-color: beige;
-  padding: 1.5rem 1rem 2rem 1rem;
-}
-
-.title {
-  width: 90vw;
-  max-width: 50rem;
-  margin: auto;
+  font-size: 20px;
+  font-family: "Work Sans", sans-serif;
+  color: #333;
+  font-weight: 300;
   text-align: center;
+  background-color: #f8f6f0;
 }
-
-.main-head {
-  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
-  font-size: 3rem;
+h1 {
+  font-weight: 300;
+  margin: 0px;
+  padding: 10px;
+  font-size: 20px;
+  background-color: #444;
+  color: #fff;
 }
-
-.main-text {
-  font-size: 1.7rem;
-}
-
-.quizBox {
-  width: 80vw;
-  max-width: 40rem;
-  background-color: rgb(218, 213, 197);
-  padding: 1.5rem;
-  display: flex;
-  flex-direction: column;
-  margin: 1rem auto;
-  border-radius: 2rem;
-  border: solid 0.3rem goldenrod;
-}
-
 .question {
-  margin: 1rem;
-  font-size: 2rem;
+  font-size: 30px;
+  margin-bottom: 10px;
 }
-.answer {
-  list-style: none;
-  background-color: rgb(243, 237, 224);
-  color: black;
-  justify-content: space-around;
-  margin: 0.7rem;
-  padding: 0.2rem 0.5rem;
-  flex-direction: row;
-  font-size: 1.5rem;
-  border-radius: 1rem;
-  border: solid 0.3rem goldenrod;
+.answers {
+  margin-bottom: 20px;
+  text-align: left;
+  display: inline-block;
 }
-
-.answer:hover {
+.answers label {
+  display: block;
+  margin-bottom: 10px;
+}
+button {
+  font-family: "Work Sans", sans-serif;
+  font-size: 22px;
+  background-color: #279;
+  color: #fff;
+  border: 0px;
+  border-radius: 3px;
+  padding: 20px;
   cursor: pointer;
-  transform: scaleX(0.98) scaleY(0.9);
-  box-shadow: rgba(111, 88, 31, 0.597) 0.2rem 0.2rem;
+  margin-bottom: 20px;
+}
+button:hover {
+  background-color: #38a;
 }
 
-.selectedAnswer {
-  list-style: none;
-  background-color: rgb(156, 114, 23);
-  color: rgb(255, 250, 239);
-  justify-content: space-around;
-  margin: 0.7rem;
-  padding: 0.2rem 0.5rem;
-  flex-direction: row;
-  font-size: 1.5rem;
-  border-radius: 1rem;
-  border: solid 0.3rem goldenrod;
-  transform: scaleX(0.95) scaleY(0.85);
+.slide {
+  position: absolute;
+  left: 0px;
+  top: 0px;
+  width: 100%;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.5s;
 }
-
-.submitBtn {
-  background-color: bisque;
-  border: 0.2rem solid goldenrod;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 0 auto;
-  font-size: 1.5rem;
-  text-decoration: none;
-  color: rgb(143, 76, 13);
-  width: 30vw;
-  min-width: 5rem;
-  max-width: 15rem;
-  padding: 0.5rem 0;
+.active-slide {
+  opacity: 1;
+  z-index: 2;
 }
-
-.hidden {
-  display: none;
+.quiz-container {
+  position: relative;
+  height: 200px;
+  margin-top: 40px;
 }

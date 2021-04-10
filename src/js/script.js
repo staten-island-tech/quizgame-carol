@@ -1,121 +1,125 @@
-console.log("connected");
+import { myQuestions } from "./question";
 
-const DOMSelectors = {
-  quizContainer: document.querySelector(".quiz"),
-  submitButton: document.getElementsByClassName("submitBtn"),
-  resultContainer: document.querySelector("#result"),
-  answer: document.querySelectorAll(".answer"),
-  choiceA: document.getElementsByClassName("answerA"),
-  choiceB: document.getElementsByClassName("answerB"),
-  choiceC: document.getElementsByClassName("answerC"),
-  choiceD: document.getElementsByClassName("answerD"),
-};
+(function () {
+  // Functions
+  function buildQuiz() {
+    // variable to store the HTML output
+    const output = [];
 
-function DOMSeleLoad() {
-  console.log(`Loading "DOMSelectors"`);
-  console.log(DOMSelectors);
-  console.log(`"DOMSelectors" complete`);
-}
-DOMSeleLoad();
+    // for each question...
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      // variable to store the list of possible answers
+      const answers = [];
 
-//Questions
-const quizQuestions = [
-  {
-    question: "How are you?",
-    a: "...",
-    b: "Why should I answer?",
-    c: "*You do not respond",
-    d: "Good. how are you?",
-    correct: "d",
-  },
-  {
-    question:
-      "Haha! I see you still have your spirit. I've been great! How's your family been?",
-    a: "...",
-    b: "*You do not respond",
-    c: "*You try to remember this kind stranger",
-    d: "Eh. Could've been better.",
-    correct: "d",
-  },
-  {
-    question:
-      "Don't be such a downer now. Gotta keep the spirits up in the household. By the way, how's the kids?",
-    a: "Huh?",
-    b: "They've been great!",
-    c: "*Should I be concerned?",
-    d: "...",
-    correct: "b",
-  },
-  {
-    question:
-      "Great to hear! Anyways, gotta run. I'm almost late for my job. See you at 5. Your place, alright?",
-    a: "Hold up. Who are you?",
-    b: "Sure, see you later!",
-    c: "*The Stranger seems to know where I live... But who is this stranger?",
-    d:
-      "Huh? First, a family. Then KIDS?! Then MY ADDRESS! You're not making any sense?",
-    correct: "b",
-  },
-];
+      // and for each available answer...
+      for (letter in currentQuestion.answers) {
+        // ...add an HTML radio button
+        /// .push --> adds HTML
+        answers.push(
+          `<label>
+              <input type="radio" name="question${questionNumber}" value="${letter}">
+              ${letter} :
+              ${currentQuestion.answers[letter]}
+            </label>`
+        );
+      }
 
-///Load Questions on screen
-const quiz = function () {
-  quizQuestions.forEach(
-    (item) =>
-      DOMSelectors.quizContainer.insertAdjacentHTML(
-        "beforeend",
-        `<div class="quizBox">
-      <h1 class="question"> ${item.question} </h1>
-      <p class="answer answerA"> ${item.a} </p>
-      <p class="answer answerB"> ${item.b} </p>
-      <p class="answer answerC"> ${item.c} </p>
-      <p class="answer answerD"> ${item.d} </p> </div>`
-      ),
-    console.log(`function "quiz" is running.`)
-  );
-};
-quiz();
+      // add this question and its answers to the output
 
-//Variables
-let score = 0;
-let self = this;
+      output.push(
+        `<div class="slide">
+            <div class="question"> ${currentQuestion.question} </div>
+            <div class="answers"> ${answers.join("")} </div>
+          </div>`
+      );
+    });
 
-//Adds event listener for clcks on answers I believe
-let userAnswers = [];
-let currentQuestion = {};
-let acceptingAnswers = true;
+    // finally combine our output list into one string of HTML and put it on the page
+    quizContainer.innerHTML = output.join("");
+  }
 
-//////// Unable to determine if successful - scratching for now
-// let inputs = document.getElementsByClassName("answer");
-// for (let i = 0; i < inputs.length; i++) {
-//   inputs[i].addEventListener("click", check);
-// }
-/////////
+  function showResults() {
+    // gather answer containers from our quiz
+    const answerContainers = quizContainer.querySelectorAll(".answers");
 
-/// If all questions are answered
+    // keep track of user's answers
+    let numCorrect = 0;
 
-//////// Does Note Work - Unable to track if all wuestions have been answered
-// function check() {
-//   userAnswers = [];
-//   let questionAnswered = 0;
-//   for (let i = 0; i < inputs.length; i++) {
-//     if (inputs[i].checked) {
-//       userAnswers.push(i % 3);
-//       questionAnswered++;
-//     }
-//   }
-//   if (questionAnswered == quizQuestions.length) finalAnswer();
+    // for each question...
+    myQuestions.forEach((currentQuestion, questionNumber) => {
+      // find selected answer
+      const answerContainer = answerContainers[questionNumber];
+      const selector = `input[name=question${questionNumber}]:checked`;
+      const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
-//   console.log(`function "check" is running`);
-// }
+      // if answer is correct
+      if (userAnswer === currentQuestion.correctAnswer) {
+        // add to the number of correct answers
+        numCorrect++;
 
-// function finalAnswer() {
-//   console.log(`Function "check" and "finalAnswer" runned`);
-// }
-////////
+        // color the answers green
+        answerContainers[questionNumber].style.color = "goldenrod";
+      }
+      // if answer is wrong or blank
+      else {
+        // color the answers red
+        answerContainers[questionNumber].style.color = "black";
+      }
+    });
 
-//Mark which answer choice was chosen - correct or not
+    // show number of correct answers out of total
+    resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}`;
+  }
 
-//Add points if the answer chosen is correct (activated/used whent he submit btn is pressed)
+  function showSlide(n) {
+    ///adds the class 'active-slide" for the question/slide to be visible
+    slides[currentSlide].classList.remove("active-slide");
+    slides[n].classList.add("active-slide");
+    currentSlide = n;
 
-//Show results at the bottom of the page of the total among of questions correct - followed by a short text
+    ///allows the previousBtn to be shown when the slide count is over 0
+    if (currentSlide === 0) {
+      previousButton.style.display = "none";
+    } else {
+      previousButton.style.display = "inline-block";
+    }
+    //allows the submitBtn to be shown on the last slide
+    if (currentSlide === slides.length - 1) {
+      nextButton.style.display = "none";
+      submitButton.style.display = "inline-block";
+    } else {
+      nextButton.style.display = "inline-block";
+      submitButton.style.display = "none";
+    }
+  }
+
+  function showNextSlide() {
+    showSlide(currentSlide + 1);
+  }
+
+  function showPreviousSlide() {
+    showSlide(currentSlide - 1);
+  }
+
+  // Variables
+  const quizContainer = document.getElementById("quiz");
+  const resultsContainer = document.getElementById("results");
+  const submitButton = document.getElementById("submit");
+
+  // Kick things off
+  buildQuiz();
+
+  // Pagination
+  const previousButton = document.getElementById("previous");
+  const nextButton = document.getElementById("next");
+  const slides = document.querySelectorAll(".slide");
+  let currentSlide = 0;
+
+  // Show the first slide
+  showSlide(currentSlide);
+
+  // Event listeners
+  submitButton.addEventListener("click", showResults);
+  previousButton.addEventListener("click", showPreviousSlide);
+  nextButton.addEventListener("click", showNextSlide);
+})();

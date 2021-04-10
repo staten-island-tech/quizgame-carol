@@ -1,4 +1,4 @@
-let Quiz = function () {
+var Quiz = function () {
   var self = this;
   this.init = function () {
     self._bindEvents();
@@ -19,7 +19,7 @@ let Quiz = function () {
   };
   this._calcResult = function () {
     var numberOfCorrectAnswers = 0;
-    $("ul").each(function (i) {
+    $("ul[data-quiz-question]").each(function (i) {
       var $this = $(this),
         chosenAnswer = $this.find(".quiz-answer.active").data("quiz-answer"),
         correctAnswer;
