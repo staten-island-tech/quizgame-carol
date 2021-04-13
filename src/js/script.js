@@ -35,7 +35,7 @@
   }
 
   function showResults() {
-    // gather answer containers from our quiz
+    // gathers the answers from the quiz
     const answerContainers = quizContainer.querySelectorAll(".answers");
 
     // keep track of user's answers
@@ -46,6 +46,7 @@
       // find selected answer
       const answerContainer = answerContainers[questionNumber];
       const selector = `input[name=question${questionNumber}]:checked`;
+      /// || --> or; if either conditions is true run the respected function
       const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
       // if answer is correct
@@ -53,12 +54,12 @@
         // add to the number of correct answers
         numCorrect++;
 
-        // color the answers green
+        // color the answers ____ when correct
         answerContainers[questionNumber].style.color = "goldenrod";
       }
       // if answer is wrong or blank
       else {
-        // color the answers red
+        // color the answers ___ when incorrect
         answerContainers[questionNumber].style.color = "#279";
       }
     });
