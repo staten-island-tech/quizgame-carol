@@ -31,11 +31,12 @@
     });
 
     // finally combine our output list into one string of HTML and put it on the page
+    /// join --> combines elements of an array into a string
     quizContainer.innerHTML = output.join("");
-  }
+  } //End of buildQuiz
 
   function showResults() {
-    // gather answer containers from our quiz
+    // gathers the answers from the quiz
     const answerContainers = quizContainer.querySelectorAll(".answers");
 
     // keep track of user's answers
@@ -46,6 +47,7 @@
       // find selected answer
       const answerContainer = answerContainers[questionNumber];
       const selector = `input[name=question${questionNumber}]:checked`;
+      /// || --> or; if either conditions is true run the respected function
       const userAnswer = (answerContainer.querySelector(selector) || {}).value;
 
       // if answer is correct
@@ -53,12 +55,12 @@
         // add to the number of correct answers
         numCorrect++;
 
-        // color the answers green
+        // color the answers ____ when correct
         answerContainers[questionNumber].style.color = "goldenrod";
       }
       // if answer is wrong or blank
       else {
-        // color the answers red
+        // color the answers ___ when incorrect
         answerContainers[questionNumber].style.color = "#279";
       }
     });
@@ -67,12 +69,11 @@
     if (numCorrect >= 3) {
       resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} 
       *The conversation went well. It appears that you've greeted an old friend.... Do you remember who they are?`;
+    } else if (numCorrect == 0) {
+      resultsContainer.innerHTML = `*The stranger appears confused by your response. Perhaps they've realized that you aren't a familiar friend.`;
     } else {
       resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length}       
       *You felt a chill down your spine. The tension in the air seems to have risen. It seems a stranger has mistaken you for a friend. You tried to play along.`;
-    }
-    if (numCorrect == 0) {
-      resultsContainer.innerHTML = `*The stranger appears confused by your response. Perhaps they've realized that you aren't a familiar friend.`;
     }
   }
 
