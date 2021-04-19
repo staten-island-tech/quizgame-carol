@@ -43,7 +43,7 @@ const myQuestions = [
   },
 ];
 
-// export { myQuestions };
+export { myQuestions };
 
 if (numCorrect >= 3) {
   resultsContainer.innerHTML = `${numCorrect} out of ${myQuestions.length} 
